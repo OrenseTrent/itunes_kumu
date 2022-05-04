@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/default_dimen"
+    android:paddingRight="@dimen/default_dimen">
+
+    <ImageView
+        android:id="@+id/activityBackBTN"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_back"
+        android:padding="@dimen/half_dimen"/>
+
+    <TextView
+        android:id="@+id/activityTitleTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_dimen"
+        android:layout_weight="1"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:freezesText="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Module Title"
+        android:textAppearance="@style/TextAppearance.Bold"
+        android:gravity="center_horizontal"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/activityIconBTN"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="invisible"
+        android:src="@mipmap/ic_launcher" />
+
+</LinearLayout>

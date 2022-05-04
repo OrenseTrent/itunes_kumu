@@ -1,0 +1,12 @@
+<resources>
+    <string name="sample_string">KS</string>
+    <string name="application_name">凯盛国际</string>
+    <string name="sponsor_lbl">赞助伙伴</string>
+    <string name="ausburg">阿根廷河床</string>
+    <string name="username">用户名(6至12位)</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>

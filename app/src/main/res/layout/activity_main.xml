@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+<!--    <include layout="@layout/item_main_header" />-->
+
+    <TextView
+        android:id="@+id/noInternetTXT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No internet connection. Offline Mode"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="@dimen/half_dimen"
+        android:textSize="@dimen/paragraphMedium"
+        android:background="@color/gray"/>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:layout_weight="1"/>
+
+
+
+</LinearLayout>
