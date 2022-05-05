@@ -1,6 +1,7 @@
 package com.kumu.trent.android.route;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.kumu.trent.android.activity.LandingActivity;
 import com.kumu.trent.android.activity.MainActivity;
@@ -17,6 +18,17 @@ public class RouteActivity extends BaseActivity {
                 .addFragmentTag(fragmentTAG)
                 .startActivity(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();
+    }
+
+    public void startDetailActivity(String fragmentTAG, int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", id);
+        RouteManager.Route.with(this)
+                .addActivityClass(MainActivity.class)
+                .addActivityTag("detail")
+                .addFragmentBundle(bundle)
+                .addFragmentTag(fragmentTAG)
+                .startActivity();
     }
 
 

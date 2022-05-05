@@ -42,6 +42,7 @@ public class BaseFragment extends Fragment {
         context = getActivity();
         onViewReady();
         onViewReady(savedInstanceState);
+
         return view;
     }
 

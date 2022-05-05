@@ -23,23 +23,11 @@ public class SplashFragment extends BaseFragment {
     public void onViewReady() {
         landingActivity = (LandingActivity) getContext();
 
-        if (!UserData.isLogin()) {
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    landingActivity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-//                            landingActivity.openLoginFragment();
-                        }
-                    });
-                }
-            };
+            runnable = () -> landingActivity.runOnUiThread(() -> {
+            landingActivity.startMainActivity("home");
+            });
             handler = new Handler();
             handler.postDelayed(runnable, 3000);
-        } else {
-            attemptRefreshToken();
-        }
 
     }
 
@@ -51,12 +39,10 @@ public class SplashFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-//        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
-//        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -65,26 +51,5 @@ public class SplashFragment extends BaseFragment {
         super.onResume();
     }
 
-    private void attemptRefreshToken() {
-//        Auth.getDefault().refreshToken(getContext());
-    }
 
-//    @Subscribe
-//    public void onResponse(Auth.RefreshTokenResponse response) {
-//        try{
-//            BaseTransformer baseTransformer= response.getData(BaseTransformer.class);
-//            if (baseTransformer.status){
-//                UserData.insert(UserData.AUTHORIZATION, baseTransformer.new_token);
-//                landingActivity.startMainActivity("home");
-//                Toast.makeText(landingActivity, "Welcome back, "+UserData.getUserModel().name+"!", Toast.LENGTH_SHORT).show();
-//            } else {
-////                Toast.makeText(landingActivity, baseTransformer.msg, Toast.LENGTH_SHORT).show();
-//            }
-//        }catch (NullPointerException e){
-//            Log.e(TAG,e.toString());
-//            ToastMessage.show(landingActivity,"Session expired! Please try to login again", ToastMessage.Status.FAILED);
-//            landingActivity.openLoginFragment();
-//        }
-//
-//    }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.kumu.trent.config.Keys;
 import com.kumu.trent.config.Url;
-import com.kumu.trent.data.model.api.SampleModel;
+import com.kumu.trent.data.model.api.TrackModel;
 import com.kumu.trent.vendor.server.request.APIRequest;
 import com.kumu.trent.vendor.server.request.APIResponse;
 import com.kumu.trent.vendor.server.transformer.BaseTransformer;
@@ -21,6 +21,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
+/**
+ * Handling of api calls using retrofit library
+ */
 
 public class Auth {
 
@@ -28,12 +31,10 @@ public class Auth {
         return new Auth();
     }
 
-
-
     public void search(Context context, String term, String country, String media,String all) {
-        APIRequest apiRequest = new APIRequest<CollectionTransformer<SampleModel>>(context) {
+        APIRequest apiRequest = new APIRequest<CollectionTransformer<TrackModel>>(context) {
             @Override
-            public Call<CollectionTransformer<SampleModel>> onCreateCall() {
+            public Call<CollectionTransformer<TrackModel>> onCreateCall() {
                 return getRetrofit().create(RequestService.class).requestSearch(Url.getSearch(), getMultipartBody());
             }
 
@@ -53,12 +54,35 @@ public class Auth {
 
     }
 
+    public void detail(Context context, int id) {
+        APIRequest apiRequest = new APIRequest<CollectionTransformer<TrackModel>>(context) {
+            @Override
+            public Call<CollectionTransformer<TrackModel>> onCreateCall() {
+                return getRetrofit().create(RequestService.class).requestDetail(Url.getLookup(), getMultipartBody());
+            }
+
+            @Override
+            public void onResponse() {
+                EventBus.getDefault().post(new SearchResponse(this));
+            }
+        };
+
+        apiRequest
+                .addParameter("id", id)
+                .execute();
+
+    }
+
 
 
     public interface RequestService {
         @Multipart
         @POST("{p}")
-        Call<CollectionTransformer<SampleModel>> requestSearch(@Path(value = "p", encoded = true) String p, @Part List<MultipartBody.Part> part);
+        Call<CollectionTransformer<TrackModel>> requestSearch(@Path(value = "p", encoded = true) String p, @Part List<MultipartBody.Part> part);
+
+        @Multipart
+        @POST("{p}")
+        Call<CollectionTransformer<TrackModel>> requestDetail(@Path(value = "p", encoded = true) String p, @Part List<MultipartBody.Part> part);
     }
 
 
@@ -68,8 +92,14 @@ public class Auth {
         }
     }
 
-    public class SearchResponse extends APIResponse<CollectionTransformer<SampleModel>> {
+    public class SearchResponse extends APIResponse<CollectionTransformer<TrackModel>> {
         public SearchResponse(APIRequest apiRequest) {
+            super(apiRequest);
+        }
+    }
+
+    public class DetailResponse extends APIResponse<CollectionTransformer<TrackModel>> {
+        public DetailResponse(APIRequest apiRequest) {
             super(apiRequest);
         }
     }

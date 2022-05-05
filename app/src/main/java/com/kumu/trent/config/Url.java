@@ -11,4 +11,5 @@ public class Url extends SecurityLayer {
     public static final String APP = App.production ? PRODUCTION_URL : DEBUG_URL;
 
     public static final String getSearch(){return "/search";}
+    public static final String getLookup(){return "/lookup";}
 }

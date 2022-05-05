@@ -64,13 +64,10 @@ public class APIRequest<T extends BaseTransformer> implements Callback<T> {
         this.context = context;
 
         final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public okhttp3.Response intercept(Chain chain) throws IOException {
-                        Request request = chain.request().newBuilder()
-                                .addHeader("Content-Type", "application/json").build();
-                        return chain.proceed(request);
-                    }
+                .addInterceptor(chain -> {
+                    Request request = chain.request().newBuilder()
+                            .addHeader("Content-Type", "application/json").build();
+                    return chain.proceed(request);
                 })
                 .readTimeout(120, TimeUnit.SECONDS)
                 .connectTimeout(120, TimeUnit.SECONDS)

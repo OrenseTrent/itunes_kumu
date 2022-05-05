@@ -321,7 +321,6 @@ public class BaseActivity extends AppCompatActivity {
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, App.SHARE_THE_APP_MESSAGE);
         startActivity(Intent.createChooser(sharingIntent, "Share " + getString(R.string.app_name)));
     }
 

@@ -19,22 +19,26 @@
                 <EditText
                     android:id="@+id/searchET"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginStart="@dimen/default_dimen"
+                    android:layout_marginTop="@dimen/default_dimen"
+                    android:layout_marginEnd="@dimen/default_dimen"
+                    android:layout_marginBottom="@dimen/default_dimen"
+                    android:background="@drawable/circular_et"
                     android:hint="Search..."
+                    android:imeOptions="actionSearch"
                     android:maxLines="1"
                     android:paddingLeft="@dimen/default_dimen"
                     android:paddingRight="@dimen/default_dimen"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.Bold"
-                    android:layout_margin="@dimen/default_dimen"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="16sp" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/gameRV"
+                    android:id="@+id/homeRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/searchET"

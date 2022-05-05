@@ -40,7 +40,7 @@ public class BaseApplication extends Application {
                     NotificationCompat.Builder mBuilder =
                             new NotificationCompat.Builder(context)
                                     .setSmallIcon(R.mipmap.ic_launcher)
-                                    .setContentTitle(getString(R.string.sample_string))
+                                    .setContentTitle(getString(R.string.application_name))
                                     .setContentText("App restarted due to some error.");
 
                     NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

@@ -1,13 +1,19 @@
 package com.kumu.trent.vendor.android.base;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 
 
 public class AndroidModel {
-
+    @PrimaryKey
+    @NonNull
     @SerializedName("id")
+    @ColumnInfo(name = "id")
     public int id;
 
     public String convertToString(Object src){
